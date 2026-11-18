@@ -1,0 +1,384 @@
+.food-bank {
+  color: #282b31;
+  width: 100%;
+}
+
+.food-page-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.food-eyebrow {
+  color: #a91e31;
+  font-size: 11px;
+}
+
+.food-page-heading h1 {
+  font-size: 24px;
+  margin: 9px 0 5px;
+}
+
+.food-page-heading p {
+  color: #999;
+  font-size: 12px;
+  margin: 0;
+}
+
+.food-primary-btn,
+.food-secondary-btn,
+.food-export-btn,
+.food-cancel-btn {
+  border: 0;
+  border-radius: 8px;
+  padding: 11px 17px;
+  font-family: inherit;
+  font-size: 12px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.food-primary-btn {
+  background: #b51f32;
+  color: white;
+}
+
+.food-primary-btn:hover {
+  background: #94182a;
+}
+
+.food-secondary-btn {
+  background: #fff;
+  color: #a91e31;
+  border: 1px solid #d9a1a8;
+}
+
+.food-export-btn {
+  background: #edf6f0;
+  color: #32855c;
+}
+
+.food-cancel-btn {
+  background: #f1f2f4;
+  color: #666;
+}
+
+.food-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.food-stat {
+  background: white;
+  border: 1px solid #eceef1;
+  border-radius: 10px;
+  padding: 18px;
+}
+
+.food-stat span {
+  display: block;
+  color: #888;
+  font-size: 11px;
+}
+
+.food-stat strong {
+  display: block;
+  font-size: 25px;
+  margin-top: 12px;
+  color: #a91e31;
+}
+
+.food-import-panel {
+  background: #fff;
+  border: 1px solid #eceef1;
+  border-radius: 11px;
+  padding: 19px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 17px;
+}
+
+.food-import-icon {
+  width: 43px;
+  height: 43px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  background: #f9eeee;
+  color: #a91e31;
+  border-radius: 10px;
+  font-size: 23px;
+}
+
+.food-import-text {
+  flex: 1;
+}
+
+.food-import-text strong,
+.food-import-text span {
+  display: block;
+}
+
+.food-import-text strong {
+  font-size: 12px;
+}
+
+.food-import-text span {
+  color: #999;
+  font-size: 10px;
+  margin-top: 6px;
+  line-height: 1.8;
+}
+
+.food-message {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  white-space: pre-line;
+  gap: 12px;
+  background: #f0f7f2;
+  color: #32855c;
+  border: 1px solid #d9ecdf;
+  border-radius: 8px;
+  padding: 13px 15px;
+  font-size: 11px;
+  line-height: 2;
+  margin-bottom: 17px;
+}
+
+.food-message button,
+.food-form-heading button {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font-size: 21px;
+  cursor: pointer;
+}
+
+.food-form,
+.food-table-panel {
+  background: white;
+  border: 1px solid #eceef1;
+  border-radius: 11px;
+  padding: 20px;
+  margin-bottom: 18px;
+}
+
+.food-form-heading,
+.food-table-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.food-form-heading strong {
+  font-size: 14px;
+}
+
+.food-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px;
+}
+
+.food-form-grid label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: #666;
+  font-size: 11px;
+}
+
+.food-form-grid input,
+.food-filters input,
+.food-filters select {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  border-radius: 7px;
+  padding: 11px 12px;
+  outline: none;
+  font-family: inherit;
+  font-size: 11px;
+  color: #444;
+}
+
+.food-form-grid input:focus,
+.food-filters input:focus,
+.food-filters select:focus {
+  border-color: #b51f32;
+}
+
+.food-form-grid input:disabled {
+  background: #f5f5f5;
+  color: #999;
+}
+
+.food-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 9px;
+  margin-top: 18px;
+}
+
+.food-table-heading {
+  margin-bottom: 18px;
+}
+
+.food-table-heading h2 {
+  font-size: 14px;
+  margin: 0;
+}
+
+.food-table-heading p {
+  color: #999;
+  font-size: 10px;
+  margin: 6px 0 0;
+}
+
+.food-table-heading > span {
+  color: #a91e31;
+  font-size: 11px;
+  background: #f9eeee;
+  padding: 7px 11px;
+  border-radius: 6px;
+}
+
+.food-filters {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr auto;
+  gap: 10px;
+  margin-bottom: 17px;
+}
+
+@media (max-width: 750px) {
+  .food-filters {
+    grid-template-columns: 1fr;
+  }
+}
+.food-table-scroll {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.food-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: right;
+  white-space: nowrap;
+  font-size: 11px;
+}
+
+.food-table th {
+  background: #f8f8f9;
+  color: #777;
+  font-weight: 600;
+  padding: 13px 12px;
+  border-bottom: 1px solid #eceef1;
+}
+
+.food-table td {
+  padding: 13px 12px;
+  border-bottom: 1px solid #f0f1f2;
+  color: #666;
+}
+
+.food-table tbody tr:hover {
+  background: #fffafa;
+}
+
+.food-table .food-name-cell {
+  color: #383b42;
+  font-weight: 600;
+}
+
+.food-active,
+.food-inactive {
+  display: inline-block;
+  border-radius: 5px;
+  padding: 5px 9px;
+  font-size: 10px;
+}
+
+.food-active {
+  color: #32855c;
+  background: #eaf6ef;
+}
+
+.food-inactive {
+  color: #a45d35;
+  background: #fff1e8;
+}
+
+.food-row-actions {
+  display: flex;
+  gap: 7px;
+}
+
+.food-row-actions button {
+  border: 0;
+  background: #f9eeee;
+  color: #a91e31;
+  border-radius: 5px;
+  padding: 6px 9px;
+  font-family: inherit;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.food-row-actions button:hover {
+  background: #f2dfe2;
+}
+
+.food-empty {
+  text-align: center !important;
+  padding: 35px !important;
+  color: #999 !important;
+}
+
+@media (max-width: 750px) {
+  .food-page-heading,
+  .food-import-panel {
+    flex-wrap: wrap;
+  }
+
+  .food-import-text {
+    min-width: 180px;
+  }
+
+  .food-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .food-filters {
+    grid-template-columns: 1fr;
+  }
+
+  .food-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .food-table-panel,
+  .food-form {
+    padding: 13px;
+  }
+}
+
+@media (max-width: 450px) {
+  .food-page-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .food-import-panel {
+    align-items: flex-start;
+  }
+}

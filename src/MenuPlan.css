@@ -1,0 +1,361 @@
+
+.menu-plan-page {
+  width: 100%;
+  color: #30343b;
+  font-family: inherit;
+  direction: rtl;
+  padding-bottom: 30px;
+}
+
+.menu-plan-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.menu-plan-header h2 {
+  margin: 0 0 8px;
+  font-size: 21px;
+  font-weight: 800;
+  color: #292d33;
+}
+
+.menu-plan-header p {
+  margin: 0;
+  color: #858b94;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.plan-status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 15px;
+  border-radius: 9px;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.plan-status.new {
+  background: #f1f2f4;
+  color: #737983;
+}
+
+.plan-status.draft {
+  background: #fff3df;
+  color: #a66b16;
+}
+
+.plan-status.final {
+  background: #e8f5ed;
+  color: #267449;
+}
+
+.menu-plan-filters {
+  display: grid;
+  grid-template-columns: 1.5fr 1.5fr 1fr 1fr;
+  gap: 14px;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #eceef0;
+  border-radius: 13px;
+  margin-bottom: 18px;
+}
+
+.menu-plan-field {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  min-width: 0;
+}
+
+.menu-plan-field label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #626a74;
+}
+
+.menu-plan-field select,
+.menu-plan-field input {
+  width: 100%;
+  min-height: 43px;
+  padding: 9px 12px;
+  border: 1px solid #e1e4e8;
+  border-radius: 8px;
+  background: #fff;
+  color: #30343b;
+  font-family: inherit;
+  font-size: 12px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.menu-plan-field select:focus,
+.menu-plan-field input:focus {
+  border-color: #a52d36;
+  box-shadow: 0 0 0 3px rgba(165, 45, 54, 0.07);
+}
+
+.menu-plan-notice {
+  padding: 14px 16px;
+  background: #fff7e9;
+  border: 1px solid #f3dfbd;
+  color: #93621e;
+  border-radius: 9px;
+  font-size: 12px;
+  line-height: 1.9;
+  margin-bottom: 18px;
+}
+
+.menu-plan-summary {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.menu-plan-summary > div {
+  background: #fff;
+  border: 1px solid #eceef0;
+  border-radius: 11px;
+  padding: 15px;
+  min-width: 0;
+}
+
+.menu-plan-summary span {
+  display: block;
+  color: #858b94;
+  font-size: 11px;
+  margin-bottom: 9px;
+}
+
+.menu-plan-summary strong {
+  display: block;
+  color: #333941;
+  font-size: 13px;
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+
+.menu-plan-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  background: #fff;
+  border: 1px solid #e9ebee;
+  border-radius: 12px;
+}
+
+.menu-plan-table {
+  width: 100%;
+  min-width: 1050px;
+  border-collapse: separate;
+  border-spacing: 0;
+  text-align: center;
+}
+
+.menu-plan-table th {
+  background: #f8f8f9;
+  color: #555d67;
+  padding: 13px 10px;
+  font-size: 12px;
+  font-weight: 800;
+  border-bottom: 1px solid #e9ebee;
+  white-space: nowrap;
+}
+
+.menu-plan-table thead tr:first-child th {
+  background: #f3f4f6;
+  color: #454b54;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.menu-plan-table thead .option-heading {
+  color: #a52d36 !important;
+  background: #fbf4f4 !important;
+  font-size: 13px;
+}
+
+.menu-plan-table th.date-column {
+  min-width: 125px;
+}
+
+.menu-plan-table td {
+  padding: 10px;
+  border-bottom: 1px solid #f0f1f3;
+  font-size: 12px;
+  vertical-align: middle;
+}
+
+.menu-plan-table tbody tr:hover {
+  background: #fdfafa;
+}
+
+.menu-plan-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.menu-plan-day {
+  min-width: 125px;
+  font-weight: 800;
+  color: #a52d36;
+  background: #fcf9f9;
+  white-space: nowrap;
+}
+
+.food-cell {
+  min-width: 220px;
+}
+
+.portions-cell {
+  min-width: 145px;
+}
+
+.menu-plan-food-select,
+.menu-plan-portions-input {
+  display: block;
+  width: 100%;
+  min-height: 40px;
+  padding: 8px 10px;
+  border: 1px solid #e2e5e8;
+  border-radius: 7px;
+  background: #fff;
+  color: #343a42;
+  font-family: inherit;
+  font-size: 12px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.menu-plan-food-select:focus,
+.menu-plan-portions-input:focus {
+  border-color: #a52d36;
+  box-shadow: 0 0 0 3px rgba(165, 45, 54, 0.06);
+}
+
+.menu-plan-portions-input {
+  text-align: center;
+  direction: ltr;
+}
+
+.menu-plan-food-select:disabled,
+.menu-plan-portions-input:disabled {
+  background: #f5f5f6;
+  color: #9298a0;
+  cursor: not-allowed;
+}
+
+.menu-plan-message {
+  margin-top: 16px;
+  padding: 12px 15px;
+  border-radius: 8px;
+  background: #f5f6f7;
+  border: 1px solid #e6e8eb;
+  color: #555d67;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.menu-plan-actions {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px;
+  margin-top: 22px;
+  flex-wrap: wrap;
+}
+
+.menu-plan-actions button {
+  min-height: 43px;
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.menu-plan-save {
+  border: 1px solid #a52d36;
+  background: #fff;
+  color: #a52d36;
+}
+
+.menu-plan-save:hover {
+  background: #fcf3f4;
+}
+
+.menu-plan-finalize {
+  border: 1px solid #a52d36;
+  background: #a52d36;
+  color: #fff;
+}
+
+.menu-plan-finalize:hover {
+  background: #87232c;
+}
+
+.menu-plan-actions button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.menu-plan-locked-message {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid #dcebe1;
+  background: #f1f8f3;
+  color: #34734e;
+  border-radius: 9px;
+  font-size: 12px;
+  line-height: 1.9;
+}
+
+@media (max-width: 900px) {
+  .menu-plan-filters {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .menu-plan-summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .menu-plan-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .menu-plan-header h2 {
+    font-size: 18px;
+  }
+
+  .menu-plan-filters {
+    grid-template-columns: 1fr;
+    padding: 15px;
+  }
+
+  .menu-plan-summary {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .menu-plan-summary > div {
+    padding: 12px;
+  }
+
+  .menu-plan-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .menu-plan-actions button {
+    width: 100%;
+  }
+}
