@@ -285,6 +285,9 @@ function Centers() {
 
   return (
     <div className="centers-page">
+      <h1 style={{ color: 'red', fontSize: '30px' }}>
+  صفحه مدیریت مراکز اجرا شد
+</h1>
       <div className="centers-header">
         <div>
           <h2>مدیریت مراکز</h2>
