@@ -102,7 +102,7 @@ function Centers() {
       setLoading(false);
     }
   }
-
+console.log('CENTERS COMPONENT LOADED');
   useEffect(() => {
     async function initialize() {
       try {
