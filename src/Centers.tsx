@@ -46,23 +46,7 @@ function Centers() {
   const [address, setAddress] = useState('');
   const [search, setSearch] = useState('');
 
-  async function loadProjects() {
-    const response = await fetch(`${API_URL}/api/projects`);
-
-    if (!response.ok) {
-      throw new Error('دریافت فهرست پروژه‌ها ناموفق بود.');
-    }
-
-    const data = await response.json();
-
-    const allowedProjects: Project[] = (data.projects || data).filter(
-      (project: Project) =>
-        ['1', '2'].includes(String(project.id))
-    );
-
-    setProjects(allowedProjects);
-  }
-
+  // دریافت مراکز یک پروژه
   async function loadCenters(projectId: string) {
     setLoading(true);
     setError('');
@@ -96,17 +80,21 @@ function Centers() {
       setCenters(mappedCenters);
     } catch (err) {
       setError(
-        err instanceof Error ? err.message : 'خطا در دریافت اطلاعات مراکز'
+        err instanceof Error
+          ? err.message
+          : 'خطا در دریافت اطلاعات مراکز'
       );
     } finally {
       setLoading(false);
     }
   }
-console.log('CENTERS COMPONENT LOADED');
+
+  // دریافت پروژه‌ها و مراکز اولیه
   useEffect(() => {
     async function initialize() {
       try {
         setError('');
+
         const response = await fetch(`${API_URL}/api/projects`);
 
         if (!response.ok) {
@@ -124,6 +112,7 @@ console.log('CENTERS COMPONENT LOADED');
 
         if (allowedProjects.length > 0) {
           const firstProjectId = String(allowedProjects[0].id);
+
           setSelectedProjectId(firstProjectId);
 
           const centersResponse = await fetch(
@@ -138,24 +127,32 @@ console.log('CENTERS COMPONENT LOADED');
             );
           }
 
-          setCenters(
-            (centersData.centers || []).map((center: ApiCenter) => ({
-              id: center.id,
-              projectId: center.project_id,
-              code: center.center_code,
-              name: center.center_name,
-              project:
-                allowedProjects.find(
-                  (p) => String(p.id) === firstProjectId
-                )?.project_name || '',
-              address: center.address || '',
-              active: center.is_active,
-            }))
-          );
+          const projectName =
+            allowedProjects.find(
+              (p) => String(p.id) === firstProjectId
+            )?.project_name || '';
+
+          const mappedCenters: Center[] = (
+            centersData.centers || []
+          ).map((center: ApiCenter) => ({
+            id: center.id,
+            projectId: center.project_id,
+            code: center.center_code,
+            name: center.center_name,
+            project: projectName,
+            address: center.address || '',
+            active: center.is_active,
+          }));
+
+          setCenters(mappedCenters);
+        } else {
+          setCenters([]);
         }
       } catch (err) {
         setError(
-          err instanceof Error ? err.message : 'خطا در ارتباط با سرور'
+          err instanceof Error
+            ? err.message
+            : 'خطا در ارتباط با سرور'
         );
       } finally {
         setLoading(false);
@@ -165,6 +162,7 @@ console.log('CENTERS COMPONENT LOADED');
     initialize();
   }, []);
 
+  // تغییر پروژه انتخاب‌شده
   async function handleProjectChange(projectId: string) {
     setSelectedProjectId(projectId);
     setShowForm(false);
@@ -172,6 +170,7 @@ console.log('CENTERS COMPONENT LOADED');
     await loadCenters(projectId);
   }
 
+  // پاک‌سازی فرم
   function resetForm() {
     setCode('');
     setName('');
@@ -180,6 +179,7 @@ console.log('CENTERS COMPONENT LOADED');
     setShowForm(false);
   }
 
+  // شروع ویرایش مرکز
   function startEdit(center: Center) {
     setEditingId(center.id);
     setCode(center.code);
@@ -188,6 +188,7 @@ console.log('CENTERS COMPONENT LOADED');
     setShowForm(true);
   }
 
+  // ثبت یا ویرایش مرکز
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
@@ -233,13 +234,16 @@ console.log('CENTERS COMPONENT LOADED');
       await loadCenters(selectedProjectId);
     } catch (err) {
       setError(
-        err instanceof Error ? err.message : 'خطا در ذخیره اطلاعات'
+        err instanceof Error
+          ? err.message
+          : 'خطا در ذخیره اطلاعات'
       );
     } finally {
       setSaving(false);
     }
   }
 
+  // تغییر وضعیت فعال یا غیرفعال مرکز
   async function toggleStatus(center: Center) {
     setError('');
 
@@ -260,17 +264,22 @@ console.log('CENTERS COMPONENT LOADED');
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.message || 'تغییر وضعیت مرکز ناموفق بود.');
+        throw new Error(
+          data.message || 'تغییر وضعیت مرکز ناموفق بود.'
+        );
       }
 
       await loadCenters(selectedProjectId);
     } catch (err) {
       setError(
-        err instanceof Error ? err.message : 'خطا در تغییر وضعیت'
+        err instanceof Error
+          ? err.message
+          : 'خطا در تغییر وضعیت'
       );
     }
   }
 
+  // جستجوی مراکز
   const filteredCenters = centers.filter((center) => {
     const term = search.trim().toLowerCase();
 
@@ -280,14 +289,14 @@ console.log('CENTERS COMPONENT LOADED');
     );
   });
 
-  const activeCount = centers.filter((center) => center.active).length;
+  const activeCount = centers.filter(
+    (center) => center.active
+  ).length;
+
   const inactiveCount = centers.length - activeCount;
 
   return (
     <div className="centers-page">
-      <h1 style={{ color: 'red', fontSize: '30px' }}>
-  صفحه مدیریت مراکز اجرا شد
-</h1>
       <div className="centers-header">
         <div>
           <h2>مدیریت مراکز</h2>
@@ -312,14 +321,20 @@ console.log('CENTERS COMPONENT LOADED');
       )}
 
       <div className="centers-project-filter">
-        <label htmlFor="project-select">انتخاب پروژه:</label>
+        <label htmlFor="project-select">
+          انتخاب پروژه:
+        </label>
+
         <select
           id="project-select"
           value={selectedProjectId}
           onChange={(e) => handleProjectChange(e.target.value)}
         >
           {projects.map((project) => (
-            <option key={project.id} value={String(project.id)}>
+            <option
+              key={project.id}
+              value={String(project.id)}
+            >
               {project.project_name}
             </option>
           ))}
@@ -331,10 +346,12 @@ console.log('CENTERS COMPONENT LOADED');
           <span>کل مراکز</span>
           <strong>{centers.length}</strong>
         </div>
+
         <div className="center-stat-card">
           <span>مراکز فعال</span>
           <strong>{activeCount}</strong>
         </div>
+
         <div className="center-stat-card">
           <span>مراکز غیرفعال</span>
           <strong>{inactiveCount}</strong>
@@ -345,8 +362,11 @@ console.log('CENTERS COMPONENT LOADED');
         <div className="center-form-panel">
           <div className="center-form-heading">
             <h3>
-              {editingId !== null ? 'ویرایش مرکز' : 'ثبت مرکز جدید'}
+              {editingId !== null
+                ? 'ویرایش مرکز'
+                : 'ثبت مرکز جدید'}
             </h3>
+
             <button
               type="button"
               className="center-close-btn"
@@ -450,7 +470,9 @@ console.log('CENTERS COMPONENT LOADED');
             <tbody>
               {loading ? (
                 <tr>
-                  <td colSpan={7}>در حال دریافت اطلاعات...</td>
+                  <td colSpan={7}>
+                    در حال دریافت اطلاعات...
+                  </td>
                 </tr>
               ) : filteredCenters.length === 0 ? (
                 <tr>
@@ -466,6 +488,7 @@ console.log('CENTERS COMPONENT LOADED');
                     <td>{center.name}</td>
                     <td>{center.project}</td>
                     <td>{center.address || '—'}</td>
+
                     <td>
                       <span
                         className={`center-status ${
@@ -475,6 +498,7 @@ console.log('CENTERS COMPONENT LOADED');
                         {center.active ? 'فعال' : 'غیرفعال'}
                       </span>
                     </td>
+
                     <td>
                       <div className="center-actions">
                         <button
@@ -483,11 +507,14 @@ console.log('CENTERS COMPONENT LOADED');
                         >
                           ویرایش
                         </button>
+
                         <button
                           className="center-toggle-btn"
                           onClick={() => toggleStatus(center)}
                         >
-                          {center.active ? 'غیرفعال‌سازی' : 'فعال‌سازی'}
+                          {center.active
+                            ? 'غیرفعال‌سازی'
+                            : 'فعال‌سازی'}
                         </button>
                       </div>
                     </td>
